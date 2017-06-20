@@ -1,0 +1,30 @@
+{
+  "name": "sample_api",
+  "version": "1.0.0",
+  "description": "Sample Rest API to be consumed to develop a dynamic website",
+  "main": "index.js",
+  "scripts": {
+    "start": "node ./bin/www",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Harshit Kumar, Vaibhav Koyadala",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.17.2",
+    "cookie-parser": "^1.4.3",
+    "cors": "^2.8.3",
+    "express": "^4.15.3",
+    "jade": "^1.11.0",
+    "morgan": "^1.8.2",
+    "mysql": "^2.13.0"
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/harshitkumar31/sample_api.git"
+  },
+  "bugs": {
+    "url": "https://github.com/harshitkumar31/sample_api/issues"
+  },
+  "homepage": "https://github.com/harshitkumar31/sample_api#readme"
+}
