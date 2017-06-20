@@ -3,7 +3,8 @@ var mysql=require('mysql');
  
 host:'localhost',
  user:'root',
- password:'admin',
+ 'port': 3306,
+ password:'root',
  database:'prod'
  
 });

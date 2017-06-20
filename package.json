@@ -4,7 +4,7 @@
   "description": "Sample Rest API to be consumed to develop a dynamic website",
   "main": "index.js",
   "scripts": {
-    "start": "node ./bin/www",
+    "start": "node index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Harshit Kumar, Vaibhav Koyadala",
@@ -14,9 +14,11 @@
     "cookie-parser": "^1.4.3",
     "cors": "^2.8.3",
     "express": "^4.15.3",
+    "express-api-doc": "0.0.11",
     "jade": "^1.11.0",
     "morgan": "^1.8.2",
-    "mysql": "^2.13.0"
+    "mysql": "^2.13.0",
+    "swagger-node-express": "^2.1.3"
   },
   "devDependencies": {},
   "repository": {

@@ -2,8 +2,7 @@ var express = require('express');
 var router = express.Router();
 var Category=require('../models/category');
 
-router.get('/:id?',function(req,res,next){
-
+router.get('/(:id)?',function(req,res,next){
   if(req.params.id){
 
     Category.getCategoryById(req.params.id,function(err,rows){
@@ -19,16 +18,14 @@ router.get('/:id?',function(req,res,next){
   }
   else{
 
-    category.getAllCategories(function(err,rows){
-
+    Category.getAllCategories(function(err,rows){
+      
       if(err)
       {
-        console.log('err', err);
         res.json(err);
       }
       else
       {
-        console.log('rows', rows);
         res.json(rows);
       }
       
@@ -43,7 +40,7 @@ router.post('/',function(req,res,next){
       res.json(err);
     }
     else{
-  res.json(req.body);//or return count for 1 &amp;amp;amp; 0
+  res.json(req.body);
 }
 });
 });
