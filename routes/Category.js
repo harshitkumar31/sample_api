@@ -10,13 +10,13 @@ router.get('/(:title)?',function(req,res,next){
 
       if(err)
       {
-        res.json(err);
+        handleError(res, err);
       }
       else{
         if(rows.length ===1 ) {
           res.json(rows[0]);
         } else {
-          handleError(res,err);
+          handleError(res,{code: 'NOT_FOUND'});
         }
       }
     });
@@ -27,7 +27,7 @@ router.get('/(:title)?',function(req,res,next){
       
       if(err)
       {
-        res.json(err);
+        handleError(res, err);
       }
       else
       {
@@ -58,7 +58,7 @@ router.delete('/:title',function(req,res,next){
 
     if(err)
     {
-      res.json(err);
+        handleError(res, err);
     }
     else
     {
@@ -73,7 +73,7 @@ router.put('/:title',function(req,res,next){
 
     if(err)
     {
-      res.json(err);
+      handleError(res, err);
     }
     else
     {

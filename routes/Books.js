@@ -14,7 +14,7 @@ router.get('/:title/books/', function(req, res, next){
 	} else {
 		Book.getBooksByCategory(req.params.title, function(err, rows){
 			if(err){
-				handleError(err, res);
+				handleError(res, err);
 			} else {
 				res.json(rows);
 			}
@@ -23,6 +23,52 @@ router.get('/:title/books/', function(req, res, next){
 
 });
 
+router.post('/:title/books', function(req,res, next){
+
+	Book.addBook(req.body, function(err, count){
+		if(err){
+			handleError(res,err);
+		} else {
+			res.json({
+				msg: "Success"
+			});
+		}
+	})
+
+});
+
+router.put('/:title/books/:id',function(req,res,next){
+
+	Book.updateBook(req.params.id,req.body,function(err,rows){
+
+		if(err)
+		{
+			handleError(res, err);
+		}
+		else
+		{
+			res.json(rows);
+		}
+	});
+});
+
+router.delete('/:title/books/:id',function(req,res,next){
+
+	Book.deleteBook(parseInt(req.params.id,10),function(err,count){
+
+		if(err)
+		{
+			handleError(res, err);
+		}
+		else
+		{
+			res.json({
+				msg: "Success"
+			});
+		}
+
+	});
+});
 
 
 module.exports = router;

@@ -5,13 +5,14 @@
  * @return {[type]}     [description]
  */
 function handleError(res, err){
+	console.log('err',err);
 	var err_type = typeOfError(err);
 	console.log('err_type',err_type);
 	res.status(err_type.code).json({error: err_type.message});
 }
 
 function typeOfError(err){
-
+	if(err && err.code){
 	switch(err.code){
 		case 'ER_DUP_ENTRY': return {
 			code: 400,
@@ -34,8 +35,12 @@ function typeOfError(err){
 			message: 'Oops! Something went wrong!'
 		};
 	}
+	}
 
-	
+	return{
+			code: 500,
+			message: 'Oops! Something went wrong!'
+		};
 }
 
 module.exports = handleError;
