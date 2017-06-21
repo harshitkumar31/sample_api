@@ -1,6 +1,6 @@
 import MySQLdb as mysql
 import sys
-
+import os
 create = {'db': 'CREATE DATABASE `mrnd_library`',
           'Categories': 'CREATE TABLE Categories (title VARCHAR(30) PRIMARY KEY)',
           'Books': 'CREATE TABLE Books  (id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY, '

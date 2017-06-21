@@ -1,18 +1,23 @@
 var express = require('express');
 var router = express.Router();
 var Category=require('../models/category');
+var handleError = require('../errors/index');
 
-router.get('/(:id)?',function(req,res,next){
-  if(req.params.id){
+router.get('/(:title)?',function(req,res,next){
+  if(req.params.title){
 
-    Category.getCategoryById(req.params.id,function(err,rows){
+    Category.getCategoryByTitle(req.params.title,function(err,rows){
 
       if(err)
       {
         res.json(err);
       }
       else{
-        res.json(rows);
+        if(rows.length ===1 ) {
+          res.json(rows[0]);
+        } else {
+          handleError(res,err);
+        }
       }
     });
   }
@@ -32,21 +37,24 @@ router.get('/(:id)?',function(req,res,next){
     });
   }
 });
+
 router.post('/',function(req,res,next){
 
   Category.addCategory(req.body,function(err,count){
     if(err)
     {
-      res.json(err);
+      // res.json(err);
+      console.log(err);
+      handleError(res, err);
     }
     else{
   res.json(req.body);
 }
 });
 });
-router.delete('/:id',function(req,res,next){
+router.delete('/:title',function(req,res,next){
 
-  Category.deleteCategory(req.params.id,function(err,count){
+  Category.deleteCategory(req.params.title,function(err,count){
 
     if(err)
     {
@@ -59,9 +67,9 @@ router.delete('/:id',function(req,res,next){
     
   });
 });
-router.put('/:id',function(req,res,next){
+router.put('/:title',function(req,res,next){
 
-  Category.updateCategory(req.params.id,req.body,function(err,rows){
+  Category.updateCategory(req.params.title,req.body,function(err,rows){
 
     if(err)
     {
