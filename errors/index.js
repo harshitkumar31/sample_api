@@ -26,6 +26,10 @@ function typeOfError(err){
 			code: 400,
 			message: 'Data supplied is too long'
 		};
+		case 'ER_BAD_FIELD_ERROR': return {
+			code: 400,
+			message: 'Field specified in the query doesn\'t exist in table'
+		}
 		case 'NOT_FOUND': return {
 			code: 404,
 			message: 'NOT FOUND'

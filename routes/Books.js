@@ -10,7 +10,13 @@ router.get('/book/:bookId', function(req, res, next){
 router.get('/:title/books/', function(req, res, next){
 
 	if(Object.keys(req.query).length > 0){
-
+		Book.searchBooks(req.query, function(err, rows){
+			if(err){
+				handleError(res, err);
+			} else {
+				res.json(rows);
+			}
+		});
 	} else {
 		Book.getBooksByCategory(req.params.title, function(err, rows){
 			if(err){
