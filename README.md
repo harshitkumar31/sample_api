@@ -49,6 +49,7 @@
     Your API sample server must be running on port 3000.
     Check this postman collection out for sample API calls.
     
+    [Sample API Calls](https://documenter.getpostman.com/view/2132724/sample_rest/6fR57w5)
     [Postman collection for the sample API](https://www.getpostman.com/collections/ea6f9b590265759dd696)
     
  
