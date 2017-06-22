@@ -70,7 +70,9 @@ router.put('/:id',function(req,res,next){
 		}
 		else
 		{
-			res.json(rows);
+			res.json({
+				msg: "Success"
+			});
 		}
 	});
 });

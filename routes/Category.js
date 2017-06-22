@@ -62,7 +62,9 @@ router.delete('/:title',function(req,res,next){
     }
     else
     {
-      res.json(count);
+      res.json({
+        msg: "Success"
+      });
     }
     
   });
@@ -77,7 +79,9 @@ router.put('/:title',function(req,res,next){
     }
     else
     {
-      res.json(rows);
+      res.json({
+        msg: "Success"
+      });
     }
   });
 });

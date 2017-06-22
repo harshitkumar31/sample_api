@@ -29,11 +29,16 @@ function typeOfError(err){
 		case 'ER_BAD_FIELD_ERROR': return {
 			code: 400,
 			message: 'Field specified in the query doesn\'t exist in table'
+		};
+		case 'ER_NO_REFERENCED_ROW_2': return {
+			code: 400,
+			message: 'Trying to add a book to a category which doesn\'t exist'
 		}
 		case 'NOT_FOUND': return {
 			code: 404,
 			message: 'NOT FOUND'
 		};
+
 		default: return{
 			code: 500,
 			message: 'Oops! Something went wrong!'
