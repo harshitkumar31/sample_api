@@ -4,8 +4,10 @@
 
 ## Steps
 1. Clone the repo
-    `git clone https://github.com/harshitkumar31/sample_api.git`
-    `cd sample_api`
+    ```
+    git clone https://github.com/harshitkumar31/sample_api.git
+    cd sample_api
+    ```
   
 2. Edit the configuration files in sample_api/config/
   
