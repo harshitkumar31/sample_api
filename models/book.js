@@ -1,4 +1,4 @@
-var db=require('../configure/index');
+var db=require('../config/index');
 
 var Book={
 

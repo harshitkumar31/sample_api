@@ -61,7 +61,7 @@ def delete_all(conn):
     delete_db(conn)
 
 def show_help():
-    print 'Usage: python books.py -c/-d all/db/cats/books'
+    print 'Usage: python configureDb.py -c/-d all/db/cats/books'
     print '-c : create'
     print '-d : delete'
 

@@ -6,7 +6,7 @@
     `git clone https://github.com/harshitkumar31/sample_api.git`
     `cd sample_api`
   
-2. Edit the configuration files in sample_api/configure/
+2. Edit the configuration files in sample_api/config/
   
       #### configureDb.py
 
@@ -16,23 +16,25 @@
       ```
        
 
-      #### index.js
+      #### default.json
 
       ```javascript
-      var connection=mysql.createPool({
-         // Change the config here 
-        host:'localhost',
-         user:'root',
-         // 'port': 3306,
-         password:'admin',
-         database:'mrnd_library'
-        });
+      {
+        "dbConfig": {
+          // change config here
+          "host":"localhost",
+          "user":"root",
+          // 'port': 3306,
+          "password":"admin",
+          "database":"mrnd_library"
+        }
+      }
       ```
 
 3. Create Database and tables
    
    ```
-   cd sample_api\configure
+   cd sample_api\config
    pip install -r requirements.txt
    python configureDb.py -c all
    ```
