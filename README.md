@@ -1,5 +1,6 @@
 # sample_api
   
+**You need MYSQL installed in order to use the API.**
 
 ## Steps
 1. Clone the repo
