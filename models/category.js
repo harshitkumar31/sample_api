@@ -1,26 +1,24 @@
-var db=require('../dbConnection/index');
-console.log('db was',db);
-var Category={
- 
-getAllCategories:function(callback){
-return db.query("Select * from category",callback);
-},
- getCategoryById:function(id,callback){
- try {
-	return db.query("select * from category where Id=?",[id],callback);
-	} catch(err){
-	return {};
+class Category {
+	constructor(db) {
+		this.db = db
 	}
- },
- addCategory:function(Category,callback){
- return db.query("Insert into category values(?,?)",[Category.Id,Category.Title],callback);
- },
- deleteCategory:function(id,callback){
-  return db.query("delete from category where Id=?",[id],callback);
- },
- updateCategory:function(id,Category,callback){
-  return db.query("update category set title=? where Id=?",[Category.Title,id],callback);
- }
- 
-};
- module.exports=Category;
+	readAll(cb) {
+		this.db.query('SELECT * FROM Categories', cb)
+	}
+	read(title, cb) {
+		console.log("do")
+		this.db.query("SELECT * FROM Categories WHERE title=?", [title], cb)
+	}
+	create(data, cb) {
+		console.log(data.title)
+		return this.db.query('INSERT INTO Categories VALUES(?)', [data.title], cb);
+	}
+	delete(data, cb) {
+		return this.db.query('DELETE FROM Categories WHERE title=?', [data.title], cb);
+	}
+}
+
+module.exports = function(db=null) {
+	db = db || require('../dbConnection/index')
+	return new Category(db)
+}

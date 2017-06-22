@@ -16,13 +16,12 @@ var app = express();
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 app.use(cors());
 app.use(logger('dev'));
-app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
-app.use(cookieParser());
+app.use(bodyParser.json());
+// app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-console.log('category was',Categories);
-app.use('/Category',Categories);
+app.use('/categories', Categories);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

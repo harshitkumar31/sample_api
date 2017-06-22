@@ -61,7 +61,7 @@ def show_help():
 
 def main():
     # change your config here
-    host, user, passwd = 'localhost', 'root', 'admin'
+    host, user, passwd = 'localhost', 'root', 'root'
     conn = mysql.connect(host=host, user=user, passwd=passwd)
 
     if len(sys.argv) != 3:
