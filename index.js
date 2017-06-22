@@ -4,9 +4,12 @@ var path = require('path');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
-var cors=require('cors');
-var Categories=require('./routes/Category');
+var cors = require('cors');
+var Categories = require('./routes/Category');
+var Books = require('./routes/Books');
+var handleError = require('./errors/index');
 var app = express();
+
 
 // view engine setup
 // app.set('views', path.join(__dirname, 'views'));
@@ -21,12 +24,15 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-console.log('category was',Categories);
 app.use('/Category',Categories);
+app.use('/Category',Books);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
-  var err = new Error('Not Found');
+  var err = handleError(res,{
+  	code: 'NOT_FOUND',
+  	status: 404,
+  });
   console.log('err was ',err);
   next(err);
 });

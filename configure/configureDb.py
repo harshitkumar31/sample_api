@@ -1,11 +1,17 @@
 import MySQLdb as mysql
 import sys
-
+import os
 create = {'db': 'CREATE DATABASE `mrnd_library`',
           'Categories': 'CREATE TABLE Categories (title VARCHAR(30) PRIMARY KEY)',
           'Books': 'CREATE TABLE Books  (id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY, '
                                         'title VARCHAR(60),'
                                         'category VARCHAR(30),'
+                                        'author VARCHAR(90),'
+                                        'year INT(4),'
+                                        'edition INT(2),'
+                                        'color VARCHAR(10),'
+                                        'num_pages INT(4),'
+                                        'img_link VARCHAR(200),'
                                         'constraint FOREIGN KEY (category) REFERENCES Categories(title))'}
 
 use_db = 'USE mrnd_library'
