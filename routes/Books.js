@@ -3,11 +3,7 @@ var router = express.Router();
 var Book = require('../models/book');
 var handleError = require('../errors/index');
 
-router.get('/book/:bookId', function(req, res, next){
-
-});
-
-router.get('/:title/books/', function(req, res, next){
+router.get('/',function(req, res, next){
 
 	if(Object.keys(req.query).length > 0){
 		Book.searchBooks(req.query, function(err, rows){
@@ -18,7 +14,28 @@ router.get('/:title/books/', function(req, res, next){
 			}
 		});
 	} else {
-		Book.getBooksByCategory(req.params.title, function(err, rows){
+		Book.getAllBooks(function(err, rows){
+			if(err){
+				handleError(res, err);
+			} else {
+				res.json(rows);
+			}
+		});
+	}
+});
+
+router.get('/:id', function(req, res, next){
+
+	if(Object.keys(req.query).length > 0){
+		Book.searchBooks(req.query, function(err, rows){
+			if(err){
+				handleError(res, err);
+			} else {
+				res.json(rows);
+			}
+		});
+	} else {
+		Book.getBooksById(req.params.id, function(err, rows){
 			if(err){
 				handleError(res, err);
 			} else {
@@ -29,7 +46,7 @@ router.get('/:title/books/', function(req, res, next){
 
 });
 
-router.post('/:title/books', function(req,res, next){
+router.post('/', function(req,res, next){
 
 	Book.addBook(req.body, function(err, count){
 		if(err){
@@ -43,7 +60,7 @@ router.post('/:title/books', function(req,res, next){
 
 });
 
-router.put('/:title/books/:id',function(req,res,next){
+router.put('/:id',function(req,res,next){
 
 	Book.updateBook(req.params.id,req.body,function(err,rows){
 
@@ -58,7 +75,7 @@ router.put('/:title/books/:id',function(req,res,next){
 	});
 });
 
-router.delete('/:title/books/:id',function(req,res,next){
+router.delete('/:id',function(req,res,next){
 
 	Book.deleteBook(parseInt(req.params.id,10),function(err,count){
 

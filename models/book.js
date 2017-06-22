@@ -2,8 +2,11 @@ var db=require('../config/index');
 
 var Book={
 
-	getBooksByCategory:function(title,callback){
-		return db.query("select * from Books where category=?",[title],callback);
+	getBooksById:function(id,callback){
+		return db.query("select * from Books where id=?",[id],callback);
+	},
+	getAllBooks:function(callback){
+		return db.query("select * from Books", callback);
 	},
 	addBook:function(Book,callback){
 		return db.query("Insert into Books (Title, category, author, year, edition, color, num_pages, img_link) values(?,?,?,?,?,?,?,?)",[Book.Title,
