@@ -2,23 +2,22 @@ class Category {
 	constructor(db) {
 		this.db = db
 	}
-	readAll(cb) {
+	getAll(cb) {
 		this.db.query('SELECT * FROM Categories', cb)
 	}
-	read(title, cb) {
-		console.log("do")
-		this.db.query("SELECT * FROM Categories WHERE title=?", [title], cb)
+	get(title, cb) {
+		this.db.query("SELECT * FROM Categories WHERE title=?", [title], (err, data) => {console.log(data); cb(err, data[0])})
 	}
 	create(data, cb) {
-		console.log(data.title)
 		return this.db.query('INSERT INTO Categories VALUES(?)', [data.title], cb);
 	}
-	delete(data, cb) {
-		return this.db.query('DELETE FROM Categories WHERE title=?', [data.title], cb);
+	delete(title, cb) {
+		return this.db.query('DELETE FROM Categories WHERE title=?', [title], cb);
 	}
 }
 
-module.exports = function(db=null) {
-	db = db || require('../dbConnection/index')
+exports.init = function(db=null) {
+	db = db || require('../connections/db')
 	return new Category(db)
 }
+
